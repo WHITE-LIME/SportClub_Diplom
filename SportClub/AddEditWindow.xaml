@@ -1,0 +1,54 @@
+﻿<Window x:Class="SportClub.AddEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SportClub"
+        mc:Ignorable="d"
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
+    <Grid Margin="10">
+        <StackPanel>
+            <Label Content="ФИО"/>
+            <TextBox Text="{Binding AllUsers.FullName}"/>
+            <Label Content="Абонемент:"/>
+            <ComboBox 
+                ItemsSource="{Binding AbonementsTypeSelect}"
+                SelectedItem="{Binding AllUsers.AbonementsType}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Abonement}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Label Content="Эксперт:"/>
+            <ComboBox
+                ItemsSource="{Binding ExpertsSelect}"
+                SelectedItem="{Binding AllUsers.Experts}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Expert}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Label Content="Отчёт о выполненном занятии:"/>
+            <TextBox Text="{Binding AllUsers.Report}" Height="100"/>
+            <Label Content="Цена абонемента:"/>
+            <TextBox Text="{Binding AllUsers.PriceOfAbonement}"/>
+        </StackPanel>
+        <StackPanel Margin="5" VerticalAlignment="Bottom">
+            <Button x:Name="SaveButton" Content="Сохранить" Click="SaveButton_Click" Margin="5"/>
+            <Button x:Name="CloseButton" Content="Отмена" Click="CloseButton_Click" Margin="5"/>
+        </StackPanel>
+    </Grid>
+</Window>

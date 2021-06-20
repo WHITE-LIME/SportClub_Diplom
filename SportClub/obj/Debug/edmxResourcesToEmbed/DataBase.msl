@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище dkuraedovModelContainer" CdmEntityContainer="dkEntities">
+    <EntitySetMapping Name="AbonementsType">
+      <EntityTypeMapping TypeName="dkuraedovModel.AbonementsType">
+        <MappingFragment StoreEntitySet="AbonementsType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Abonement" ColumnName="Abonement" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Experts">
+      <EntityTypeMapping TypeName="dkuraedovModel.Experts">
+        <MappingFragment StoreEntitySet="Experts">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Expert" ColumnName="Expert" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="dkuraedovModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="AbonementID" ColumnName="AbonementID" />
+          <ScalarProperty Name="Report" ColumnName="Report" />
+          <ScalarProperty Name="ExpertID" ColumnName="ExpertID" />
+          <ScalarProperty Name="PriceOfAbonement" ColumnName="PriceOfAbonement" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

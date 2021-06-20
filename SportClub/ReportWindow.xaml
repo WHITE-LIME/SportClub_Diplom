@@ -1,0 +1,19 @@
+﻿<Window x:Class="SportClub.ReportWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SportClub"
+        mc:Ignorable="d"
+        Height="350" Width="800">
+    <Grid Margin="10">
+        <StackPanel Orientation="Vertical" Margin="3">
+            <Label Margin="5" HorizontalContentAlignment="Center" Content="Отчёт:"/>
+            <TextBox Margin="5" Height="200" Text="{Binding AllUsers.Report}"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" Margin="3">
+            <Button Margin="5" x:Name="SaveButton" Content="Сохранить" Click="SaveButton_Click"/>
+            <Button Margin="5" x:Name="CloseButton" Content="Отмена" Click="CloseButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
