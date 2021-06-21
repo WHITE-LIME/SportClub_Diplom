@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\dimak\source\repos\SportClub\obj\Debug\
+C:\Users\dimak\Documents\GitHub\SportClub_Diplom\SportClub\obj\Debug\
 SportClub
 none
 false
 DEBUG;TRACE
-C:\Users\dimak\source\repos\SportClub\App.xaml
-3879266771
+C:\Users\dimak\Documents\GitHub\SportClub_Diplom\SportClub\App.xaml
+8-1062627220
 2-733428501
-14-1371165021
-20-1403208286
-AddEditWindow.xaml;MainWindow.xaml;ReportWindow.xaml;
+19-1030062767
+20-286226035
+AbonementsTypeWindow.xaml;AddEditATWindow.xaml;AddEditExpertWindow.xaml;AddEditWindow.xaml;ExpertsWindow.xaml;StartWindow.xaml;UsersWindow.xaml;ReportWindow.xaml;
 
 False
 

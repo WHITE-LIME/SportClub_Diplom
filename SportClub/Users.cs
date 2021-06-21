@@ -20,6 +20,7 @@ namespace SportClub
         public string Report { get; set; }
         public Nullable<int> ExpertID { get; set; }
         public int PriceOfAbonement { get; set; }
+        public string Photo { get; set; }
     
         public virtual AbonementsType AbonementsType { get; set; }
         public virtual Experts Experts { get; set; }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище dkuraedovModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище dkuraedovModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AbonementsType">
           <Key>
             <PropertyRef Name="ID" />
@@ -17,7 +17,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Expert" Type="nvarchar" MaxLength="50" />
+          <Property Name="Expert" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -29,6 +30,7 @@
           <Property Name="Report" Type="nvarchar(max)" />
           <Property Name="ExpertID" Type="int" />
           <Property Name="PriceOfAbonement" Type="int" Nullable="false" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_Users_AbonementsType">
           <End Role="AbonementsType" Type="Self.AbonementsType" Multiplicity="1" />
@@ -67,8 +69,7 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="dkuraedovModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -85,8 +86,9 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Expert" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Expert" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Users_Experts" FromRole="Experts" ToRole="Users" />
+          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -100,6 +102,7 @@
           <Property Name="PriceOfAbonement" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AbonementsType" Relationship="Self.FK_Users_AbonementsType" FromRole="Users" ToRole="AbonementsType" />
           <NavigationProperty Name="Experts" Relationship="Self.FK_Users_Experts" FromRole="Users" ToRole="Experts" />
+          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Users_AbonementsType">
           <End Role="AbonementsType" Type="Self.AbonementsType" Multiplicity="1" />
@@ -155,6 +158,7 @@
           <EntitySetMapping Name="Experts">
             <EntityTypeMapping TypeName="dkuraedovModel.Experts">
               <MappingFragment StoreEntitySet="Experts">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Expert" ColumnName="Expert" />
               </MappingFragment>
@@ -163,6 +167,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="dkuraedovModel.Users">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="AbonementID" ColumnName="AbonementID" />

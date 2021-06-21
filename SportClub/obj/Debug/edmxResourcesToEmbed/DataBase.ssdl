@@ -12,7 +12,8 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Expert" Type="nvarchar" MaxLength="50" />
+    <Property Name="Expert" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -24,6 +25,7 @@
     <Property Name="Report" Type="nvarchar(max)" />
     <Property Name="ExpertID" Type="int" />
     <Property Name="PriceOfAbonement" Type="int" Nullable="false" />
+    <Property Name="Photo" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <Association Name="FK_Users_AbonementsType">
     <End Role="AbonementsType" Type="Self.AbonementsType" Multiplicity="1" />

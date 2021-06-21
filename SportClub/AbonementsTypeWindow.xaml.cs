@@ -11,56 +11,45 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SportClub
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для AbonementsTypeWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class AbonementsTypeWindow : Window, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private IEnumerable<Users> _UsersList;
+        private IEnumerable<AbonementsType> _AbonementsTypeList;
 
-        public IEnumerable<Users> UsersList
+        public IEnumerable<AbonementsType> AbonementsTypeList
         {
             get
             {
-                var Result = _UsersList;
-
-                if (_AbonementsTypeListValue > 0)
-                    Result = Result.Where(ai => ai.AbonementID == _AbonementsTypeListValue);
+                var Result = _AbonementsTypeList;
 
                 if (SearchFilter != "")
-                    Result = Result.Where(ai => ai.FullName.IndexOf(SearchFilter, StringComparison.OrdinalIgnoreCase) >= 0);
+                    Result = Result.Where(ai => ai.Abonement.IndexOf(SearchFilter, StringComparison.OrdinalIgnoreCase) >= 0);
 
-                if (SortList) Result = Result.OrderBy(ai => ai.PriceOfAbonement);
-                else Result = Result.OrderByDescending(ai => ai.PriceOfAbonement);
-
-                return Result.Skip((CurrentPage - 1) * 10).Take(10);
+                return Result.Skip((CurrentPage - 1) * 12).Take(12);
             }
             set
             {
-                _UsersList = value;
-                if(PropertyChanged != null)
+                _AbonementsTypeList = value;
+                if (PropertyChanged != null)
                 {
-                    PropertyChanged(this, new PropertyChangedEventArgs("UsersList"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("AbonementsTypeList"));
                 }
             }
         }
 
-        public List<AbonementsType> AbonementsTypeList { get; set; }
-
-        public MainWindow()
+        public AbonementsTypeWindow()
         {
             InitializeComponent();
             DataContext = this;
-            UsersList = Core.DB.Users.ToArray();
-            AbonementsTypeList = Core.DB.AbonementsType.ToList();
-            AbonementsTypeList.Insert(0, new AbonementsType { Abonement = "Все типы абонементов" });
+            AbonementsTypeList = Core.DB.AbonementsType.ToArray();
         }
 
         private int _CurrentPage;
@@ -74,9 +63,9 @@ namespace SportClub
             {
                 if (value > 0)
                 {
-                    if ((_UsersList.Count() % 10) == 0)
+                    if ((_AbonementsTypeList.Count() % 12) == 0)
                     {
-                        if (value <= _UsersList.Count() / 10)
+                        if (value <= _AbonementsTypeList.Count() / 12)
                         {
                             _CurrentPage = value;
                             Invalidate();
@@ -84,7 +73,7 @@ namespace SportClub
                     }
                     else
                     {
-                        if(value <= (_UsersList.Count() / 10 ) + 1 )
+                        if (value <= (_AbonementsTypeList.Count() / 12) + 1)
                         {
                             _CurrentPage = value;
                             Invalidate();
@@ -104,26 +93,9 @@ namespace SportClub
             set
             {
                 _AbonementsTypeListValue = value;
-                if(PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("UsersList"));
-                }
-            }
-        }
-
-        private bool _SortList = true;
-        public bool SortList
-        {
-            get
-            {
-                return _SortList;
-            }
-            set
-            {
-                _SortList = value;
                 if (PropertyChanged != null)
                 {
-                    PropertyChanged(this, new PropertyChangedEventArgs("UsersList"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("AbonementsTypeList"));
                 }
             }
         }
@@ -140,50 +112,50 @@ namespace SportClub
                 _SearchFilter = value;
                 if (PropertyChanged != null)
                 {
-                    PropertyChanged(this, new PropertyChangedEventArgs("UsersList"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("AbonementsTypeList"));
                 }
             }
         }
 
         private void Invalidate()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("UsersList"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("AbonementsTypeList"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("CurrentPage"));
         }
 
         private void AddWindow_Click(object sender, RoutedEventArgs e)
         {
-            var addWin = new AddEditWindow(new Users());
-            if(addWin.ShowDialog() == true)
+            var addWin = new AddEditATWindow(new AbonementsType());
+            if (addWin.ShowDialog() == true)
             {
-                UsersList = Core.DB.Users.ToArray();
+                AbonementsTypeList = Core.DB.AbonementsType.ToArray();
             }
         }
 
         private void EditItem_Click(object sender, RoutedEventArgs e)
         {
-            var editWin = new AddEditWindow(UsersListView.SelectedItem as Users);
-            if(editWin.ShowDialog() == true)
+            var editWin = new AddEditATWindow(AbonementsTypeListView.SelectedItem as AbonementsType);
+            if (editWin.ShowDialog() == true)
             {
-                UsersList = Core.DB.Users.ToArray();
+                AbonementsTypeList = Core.DB.AbonementsType.ToArray();
             }
         }
 
         private void DeleteItem_Click(object sender, RoutedEventArgs e)
         {
-            var deleteUser = UsersListView.SelectedItem as Users;
+            var deleteAbonement = AbonementsTypeListView.SelectedItem as AbonementsType;
             try
             {
-                Core.DB.Users.Remove(deleteUser);
+                Core.DB.AbonementsType.Remove(deleteAbonement);
                 Core.DB.SaveChanges();
 
                 MessageBox.Show($"Удалено");
 
-                UsersList = Core.DB.Users.ToArray();
+                AbonementsTypeList = Core.DB.AbonementsType.ToArray();
 
                 if (PropertyChanged != null)
                 {
-                    PropertyChanged(this, new PropertyChangedEventArgs("ProductList"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("AbonementsTypeList"));
                 }
             }
             catch { }
@@ -192,11 +164,6 @@ namespace SportClub
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
-        }
-
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-            SortList = (sender as RadioButton).Tag.ToString() == "1";
         }
 
         private void SearchFilterTextBox_KeyUp(object sender, KeyEventArgs e)
@@ -214,18 +181,12 @@ namespace SportClub
             CurrentPage++;
         }
 
-        private void AbonementsTypeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void StartWinButton_Click(object sender, RoutedEventArgs e)
         {
-            AbonementsTypeListValue = (AbonementsTypeListComboBox.SelectedItem as AbonementsType).ID;
-        }
+            var startWin = new StartWindow();
+            startWin.Show();
 
-        private void ReportItem_Click(object sender, RoutedEventArgs e)
-        {
-            var reportWin = new ReportWindow(UsersListView.SelectedItem as Users);
-            if (reportWin.ShowDialog() == true)
-            {
-                UsersList = Core.DB.Users.ToArray();
-            }
+            Close();
         }
     }
 }

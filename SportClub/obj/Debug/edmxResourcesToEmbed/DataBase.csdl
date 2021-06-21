@@ -13,8 +13,9 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Expert" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Expert" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Users" Relationship="Self.FK_Users_Experts" FromRole="Experts" ToRole="Users" />
+    <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -28,6 +29,7 @@
     <Property Name="PriceOfAbonement" Type="Int32" Nullable="false" />
     <NavigationProperty Name="AbonementsType" Relationship="Self.FK_Users_AbonementsType" FromRole="Users" ToRole="AbonementsType" />
     <NavigationProperty Name="Experts" Relationship="Self.FK_Users_Experts" FromRole="Users" ToRole="Experts" />
+    <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_Users_AbonementsType">
     <End Role="AbonementsType" Type="Self.AbonementsType" Multiplicity="1" />

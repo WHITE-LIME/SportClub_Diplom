@@ -12,6 +12,7 @@
     <EntitySetMapping Name="Experts">
       <EntityTypeMapping TypeName="dkuraedovModel.Experts">
         <MappingFragment StoreEntitySet="Experts">
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Expert" ColumnName="Expert" />
         </MappingFragment>
@@ -20,6 +21,7 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="dkuraedovModel.Users">
         <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="FullName" ColumnName="FullName" />
           <ScalarProperty Name="AbonementID" ColumnName="AbonementID" />
