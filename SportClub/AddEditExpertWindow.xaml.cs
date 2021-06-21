@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace SportClub
 {
-    /// <summary>
-    /// Логика взаимодействия для AddEditExpertWindow.xaml
-    /// </summary>
     public partial class AddEditExpertWindow : Window
     {
         public Experts AllExperts { get; set; }

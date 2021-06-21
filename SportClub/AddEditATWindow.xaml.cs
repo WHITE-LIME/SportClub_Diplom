@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace SportClub
 {
-    /// <summary>
-    /// Логика взаимодействия для AddEditATWindow.xaml
-    /// </summary>
     public partial class AddEditATWindow : Window
     {
         public AbonementsType AllAbonementsType { get; set; }

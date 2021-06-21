@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace SportClub
 {
-    /// <summary>
-    /// Логика взаимодействия для AbonementsTypeWindow.xaml
-    /// </summary>
     public partial class AbonementsTypeWindow : Window, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;

@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace SportClub
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
 
     public partial class Users
     {

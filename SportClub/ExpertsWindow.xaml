@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SportClub"
         mc:Ignorable="d"
-        Title="ExpertsWindow" WindowStartupLocation="CenterScreen"
+        Title="Эксперты" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         WindowStyle="None"
         WindowState="Maximized"
